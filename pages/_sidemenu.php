@@ -2,127 +2,56 @@
 
 function get_sidemenu_admin(){
 	echo '
-		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-		<!-- Add icons to the links using the .nav-icon class
-		with font-awesome or any other icon font library -->
-			<li class="nav-item">
-				<a href="#" class="nav-link">
-					<i class="nav-icon fas fa-user-alt"></i>
-					<p>ADMIN USUARIOS<i class="right fas fa-angle-left"></i></p>
-				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="SAFIG_ADMIN_USER.php" class="nav-link">
-							<i class="far fa-user nav-icon"></i>
-							<p>USUARIOS</p>
-						</a>
-					</li>
-				</ul>
+		<ul class="sidebar-nav">
+			<li class="sidebar-header">
+				Pages
 			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">
-					<i class="nav-icon fas fa-home"></i>
-					<p>FARMACIAS<i class="right fas fa-angle-left"></i></p>
+			<li class="sidebar-item active">
+				<a class="sidebar-link" href="index.html">
+					<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
 				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="SAFIG_ADMIN_PHARMACY.php" class="nav-link">
-							<i class="nav-icon fas fa-check"></i>
-							<p>REGISTAR</p>
-						</a>
-					</li>
-				</ul>
 			</li>
-			<li class="nav-item">
-				<a href="SAFIG_ADMIN_LABORATORY.php" class="nav-link">
-					<i class="nav-icon fas fa-flask"></i>
-					<p>LABORATORIOS<i class="right fas fa-angle-left"></i></p>
+			<li class="sidebar-item">
+				<a class="sidebar-link" href="pages-profile.html">
+					<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
 				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="SAFIG_ADMIN_LABORATORY.php" class="nav-link">
-							<i class="nav-icon fas fa-check"></i>
-							<p>REGISTAR</p>
-						</a>
-					</li>
-				</ul>
 			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">
-					<i class="nav-icon fas fa-file"></i>
-					<p>REPORTES<i class="right fas fa-angle-left"></i></p>
+			<li class="sidebar-item">
+				<a class="sidebar-link" href="pages-sign-in.html">
+					<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
 				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="#" class="nav-link">
-							<i class="fas fa-list nav-icon"></i>
-							<p>LISTAR</p>
-						</a>
-					</li>
-				</ul>
+			</li>
+			<li class="sidebar-item">
+				<a class="sidebar-link" href="pages-sign-up.html">
+					<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+				</a>
+			</li>
+			<li class="sidebar-item">
+				<a class="sidebar-link" href="pages-blank.html">
+					<i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+				</a>
 			</li>
 		</ul>
 	';
 }
-function get_sidemenu_operador(){
-	echo '
-		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-		<!-- Add icons to the links using the .nav-icon class
-		with font-awesome or any other icon font library -->
-			<li class="nav-item">
-				<a href="TOWER_OPERADOR.php" class="nav-link">
-					<i class="nav-icon fas fa-calendar"></i>
-					<p>ADMIN EVENTOS<i class="right fas fa-angle-left"></i></p>
-				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="TOWER_OPERADOR_CALENDAR.php" class="nav-link">
-							<i class="nav-icon fas fa-check"></i>
-							<p>CREAR EVENTOS</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="TOWER_OPERADOR_MOSTRAR_EVENTOS.php" class="nav-link">
-							<i class="nav-icon fas fa-eye"></i>
-							<p>MOSTRAR EVENTOS</p>
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	';
-}
-function get_sidemenu_supersu(){
-	echo '
-		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-		<!-- Add icons to the links using the .nav-icon class
-		with font-awesome or any other icon font library -->
-			<li class="nav-item">
-				<a href="TOWER_SUPERSU.php" class="nav-link">
-					<i class="nav-icon fas fa-calendar"></i>
-					<p>EVENTOS<i class="right fas fa-angle-left"></i></p>
-				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="TOWER_SUPERSU_CALENDAR_MULTI.php" class="nav-link">
-							<i class="nav-icon fas fa-check"></i>
-							<p>CALENDARIO</p>
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	';
-}
+
 
 
 
 function header_style(){
 	echo '	<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<title>SAFIG | SALE</title>
-			<!-- Font Awesome -->
-			<link rel="icon" href="/img/logos/SAFIG_LOGO.ico" type="image/x-icon">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+			<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+			<meta name="author" content="AdminKit">
+			<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+			
+			<link rel="preconnect" href="https://fonts.gstatic.com">
+			<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+			<title>Bootstrap 5 Admin Template</title>
+			<link href="../css/app.css" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">	
+			
 			<script src="../plugins/jquery/jquery_tower.min.js"></script>
 			<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
 			<link rel="stylesheet" href="../plugins/datatables/datatables.css">
@@ -134,21 +63,27 @@ function header_style(){
 			<link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
 			<link rel="stylesheet" href="../plugins/fpdf/fpdf.css">
 			<link rel="stylesheet" href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
-			<!-- LEAFLET----->
-			<link rel="stylesheet" href="../plugins/leaflet/leaflet.css">
-			<!-- Theme style -->
-			<link rel="stylesheet" href="../dist/css/adminlte.min.css">';
 			
-			
-	
+			';
 }
 function Footer_style(){
-	echo '<footer class="main-footer">
-			<div class="float-right d-none d-sm-block">
-			  <b>Version</b> 1.0
-			</div>
-			<strong>Copyright &copy; 2021-2021 <a href="#">...</a>.</strong>
-		  </footer>';
+	echo '<div class="container-fluid">
+				<div class="row text-muted">
+					<div class="col-6 text-start">
+						<p class="mb-0">
+							<a class="text-muted" href="#" target="_blank"><strong>AdminKit Demo</strong></a> &copy;
+						</p>
+					</div>
+					<div class="col-6 text-end">
+						<ul class="list-inline">
+							<li class="list-inline-item">
+								<a class="text-muted" href="#" target="_blank">Support</a>
+							</li>
+							<li class="list-inline-item">
+						</ul>
+					</div>
+				</div>
+			</div>';
 	
 }
 
@@ -163,8 +98,6 @@ function library(){
 			<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 			<!-- jQuery UI -->
 			<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
-			<!-- AdminLTE App -->
-			<script src="../dist/js/adminlte.min.js"></script>
 			<!-- fullCalendar 2.2.5 -->
 			<script src="../plugins/select2/js/select2.js"></script>
 			<script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
@@ -175,13 +108,7 @@ function library(){
 			<script src="../plugins/fullcalendar/3.10.0/locale/es.js"></script>
 			<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
 			
-			<!-- LEAFLET--->
-			<script src="../plugins/leaflet/leaflet.js"></script>
-			<script src="../plugins/leaflet/Control.Geocoder.js"></script>
-			<script src="../plugins/leaflet/Polyline.encoded.js"></script>
-			<!-- AdminLTE for demo purposes -->
-			<script src="../dist/js/demo.js"></script>';
-	
+			';
 }
 
 function Modals(){
@@ -241,6 +168,7 @@ function Modals(){
 			</div>
 			';
 }
+
 function get_side_logout(){
 	echo ' 
 		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
