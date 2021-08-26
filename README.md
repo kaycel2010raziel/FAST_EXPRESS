@@ -1,2 +1,0 @@
-# RAZIEL
-repositorio para pruebas
