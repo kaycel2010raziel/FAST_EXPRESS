@@ -53,6 +53,7 @@ function header_style(){
 			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">	
 			
 			<script src="../plugins/jquery/jquery_tower.min.js"></script>
+			<script src="../plugins/jquery/jquery.min.js"></script>
 			<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
 			<link rel="stylesheet" href="../plugins/datatables/datatables.css">
 			<!-- fullCalendar -->
@@ -170,10 +171,9 @@ function Modals(){
 }
 
 function get_side_logout(){
-	echo ' 
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-		<div class="dropdown-menu text-center" aria-labelledby="dropdownMenu2">
-			<a style="display: block;" class="btn btn-primary m-1 px-1" href="../password_change.php">Cambiar Contraseña</a>
-			<a style="display: block;" class="btn btn-danger m-1  px-1" href="../logout.php">Cerrar Sesión</a>
-		</div>';
+	echo '	<div class="dropdown-menu dropdown-menu-end">
+				<a class="dropdown-item" href="../password_change.php"><i class="align-middle me-1" data-feather="user"></i> Cambiar contraseña</a>
+				<a class="dropdown-item" href="../logout.php"><i class="align-middle me-1" data-feather="pie-chart"></i> Cerrar Sesión</a>
+			</div>'
+		;
 }

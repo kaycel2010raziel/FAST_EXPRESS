@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2021 a las 22:15:08
+-- Tiempo de generación: 30-08-2021 a las 22:27:22
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -199,24 +199,36 @@ INSERT INTO `estado` (`IDESTADO`, `NOMBRE`, `DESCRIPCION`, `IDPADRE`, `FECHA_CRE
 (6, 'Generado', 'estado generado  para el envio', 5, '2021-08-26 19:31:51'),
 (7, 'Asignado', 'estado asignado para el envio, asignacion cartero', 5, '2021-08-26 19:31:51'),
 (8, 'En ruta', 'estado en ruta para el envio', 5, '2021-08-26 19:32:09'),
-(9, 'Entregado', 'estado entregado para el envio', 5, '2021-08-26 19:32:31');
+(9, 'Entregado', 'estado entregado para el envio', 5, '2021-08-26 19:32:31'),
+(10, 'GENERAL_NOTIFICACIONES', 'control de estados para la manipulacion de notificaciones', 0, '2021-08-30 17:13:10'),
+(11, 'Notificado', 'Notificado', 10, '2021-08-30 17:14:13'),
+(12, 'Leido', 'Notificacion leida por el usuario', 10, '2021-08-30 17:14:48');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `general_member_login_data`
+-- Estructura de tabla para la tabla `login_access`
 --
 
-CREATE TABLE `general_member_login_data` (
-  `LOGIN_DATA_ID` int(11) NOT NULL,
-  `USER_ID` varchar(45) DEFAULT NULL,
-  `LOGIN_TIMESTAMP` timestamp NULL DEFAULT NULL,
-  `LAST_ACTIVITY_TIMESTAMP` timestamp NULL DEFAULT NULL,
-  `REMOTE_IP` varchar(45) DEFAULT NULL,
-  `STATUS_ID` varchar(45) DEFAULT NULL,
-  `GENERAL_MEMBER_LOGIN_DATAcol` int(1) DEFAULT NULL,
-  `LOGIN_STRING` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `login_access` (
+  `idaccess` int(11) NOT NULL,
+  `user_id` varchar(75) NOT NULL,
+  `remote_ip` varchar(75) NOT NULL,
+  `status` int(11) NOT NULL,
+  `login_string` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `login_access`
+--
+
+INSERT INTO `login_access` (`idaccess`, `user_id`, `remote_ip`, `status`, `login_string`) VALUES
+(0, '1', '::1', 1, 'b6751a9c13fe59dfa4eaa0452bd73425758071278c42659093a49da60e1ea89fdcdf66dc05e2c2535b25f56e876f1e07c8ee616e931b6e72e396b23333e1eca0'),
+(0, '1', '::1', 1, 'b6751a9c13fe59dfa4eaa0452bd73425758071278c42659093a49da60e1ea89fdcdf66dc05e2c2535b25f56e876f1e07c8ee616e931b6e72e396b23333e1eca0'),
+(0, '1', '::1', 1, 'b6751a9c13fe59dfa4eaa0452bd73425758071278c42659093a49da60e1ea89fdcdf66dc05e2c2535b25f56e876f1e07c8ee616e931b6e72e396b23333e1eca0'),
+(0, '1', '::1', 1, 'b6751a9c13fe59dfa4eaa0452bd73425758071278c42659093a49da60e1ea89fdcdf66dc05e2c2535b25f56e876f1e07c8ee616e931b6e72e396b23333e1eca0'),
+(0, '1', '::1', 1, 'b6751a9c13fe59dfa4eaa0452bd73425758071278c42659093a49da60e1ea89fdcdf66dc05e2c2535b25f56e876f1e07c8ee616e931b6e72e396b23333e1eca0'),
+(0, '1', '::1', 1, 'b6751a9c13fe59dfa4eaa0452bd73425758071278c42659093a49da60e1ea89fdcdf66dc05e2c2535b25f56e876f1e07c8ee616e931b6e72e396b23333e1eca0');
 
 -- --------------------------------------------------------
 
@@ -581,6 +593,31 @@ INSERT INTO `municipio` (`IDMUNICIPIO`, `NOMBRE`, `POLIGONO`, `FECHA_CREACION`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `notificacion`
+--
+
+CREATE TABLE `notificacion` (
+  `IDNOTIFICACION` int(11) NOT NULL,
+  `HEADER` varchar(75) NOT NULL,
+  `BODY` varchar(500) NOT NULL,
+  `FECHA_CREACION` datetime NOT NULL DEFAULT current_timestamp(),
+  `FECHA_VIEW` datetime NOT NULL,
+  `FKUSUARIO` int(11) NOT NULL,
+  `FKUSUARIO_DESTINO` int(11) NOT NULL,
+  `FKESTADO` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `notificacion`
+--
+
+INSERT INTO `notificacion` (`IDNOTIFICACION`, `HEADER`, `BODY`, `FECHA_CREACION`, `FECHA_VIEW`, `FKUSUARIO`, `FKUSUARIO_DESTINO`, `FKESTADO`) VALUES
+(1, 'Primer Notificacion', 'el paquete a sido entregado codigo MPS', '2021-08-30 13:35:45', '2021-08-30 14:23:53', 1, 1, 11),
+(2, 'Listado', 'Segunda Notificacion', '2021-08-30 13:35:45', '2021-08-30 14:23:56', 1, 1, 11);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `orden`
 --
 
@@ -636,15 +673,18 @@ CREATE TABLE `persona` (
   `APELLIDO` varchar(150) DEFAULT NULL,
   `GENERO` varchar(2) DEFAULT NULL,
   `FECHA_NACIMIENTO` date DEFAULT NULL,
-  `CORREO` varchar(150) DEFAULT NULL,
   `TELEFONO` varchar(20) DEFAULT NULL,
   `DIRECCION` varchar(150) DEFAULT NULL,
-  `PASSWORD` varchar(45) DEFAULT NULL,
   `FECHA_CREACION` timestamp NULL DEFAULT current_timestamp(),
-  `FKTIPO_PERSONA` int(11) NOT NULL,
-  `FKESTADO` int(11) NOT NULL,
-  `FKROL` int(11) NOT NULL
+  `FKESTADO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`IDPERSONA`, `DPI`, `NIT`, `NOMBRE`, `APELLIDO`, `GENERO`, `FECHA_NACIMIENTO`, `TELEFONO`, `DIRECCION`, `FECHA_CREACION`, `FKESTADO`) VALUES
+(1, '2525594870609', '80503853', 'Max', 'Gonzalez', 'M', '1994-08-28', NULL, 'lejos de aqui serca de aya', '2021-08-30 15:19:24', 2);
 
 -- --------------------------------------------------------
 
@@ -656,6 +696,7 @@ CREATE TABLE `rol` (
   `IDROL` int(11) NOT NULL,
   `NOMBRE` varchar(75) DEFAULT NULL,
   `DESCRIPCION` varchar(150) DEFAULT NULL,
+  `FOTO` varchar(75) NOT NULL,
   `FECHA_CREACION` timestamp NULL DEFAULT current_timestamp(),
   `FKESTADO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -664,10 +705,10 @@ CREATE TABLE `rol` (
 -- Volcado de datos para la tabla `rol`
 --
 
-INSERT INTO `rol` (`IDROL`, `NOMBRE`, `DESCRIPCION`, `FECHA_CREACION`, `FKESTADO`) VALUES
-(1, 'Administrador', 'rol de administración para todo el sistema', '2021-08-26 19:51:36', 2),
-(2, 'Secretaria', 'rol de secretaria para el uso del sistema', '2021-08-26 19:51:36', 2),
-(3, 'Cartero', 'rol de cartero para el uso del sistema', '2021-08-26 19:52:10', 2);
+INSERT INTO `rol` (`IDROL`, `NOMBRE`, `DESCRIPCION`, `FOTO`, `FECHA_CREACION`, `FKESTADO`) VALUES
+(1, 'Administrador', 'rol de administración para todo el sistema', 'admin.png', '2021-08-26 19:51:36', 2),
+(2, 'Secretaria', 'rol de secretaria para el uso del sistema', 'secretaria.jpg', '2021-08-26 19:51:36', 2),
+(3, 'Cartero', 'rol de cartero para el uso del sistema', 'cartero.png', '2021-08-26 19:52:10', 2);
 
 -- --------------------------------------------------------
 
@@ -732,6 +773,29 @@ CREATE TABLE `tipo_envio` (
   `FKESTADO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `IDUSUARIO` int(11) NOT NULL,
+  `CORREO` varchar(75) NOT NULL,
+  `PASSWORD` varchar(500) NOT NULL,
+  `PASSWORD_CHANGE` tinyint(4) NOT NULL DEFAULT 0,
+  `FKESTADO` int(11) NOT NULL,
+  `FKROL` int(11) NOT NULL,
+  `FKPERSONA` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`IDUSUARIO`, `CORREO`, `PASSWORD`, `PASSWORD_CHANGE`, `FKESTADO`, `FKROL`, `FKPERSONA`) VALUES
+(1, 'mgonzalez@gmail.com', '$2y$10$9HIVa7ZJGGCfR7cwXbtrIOMkNNKaAqT7HY/h5LzWnCZJ9WKSTIYL6', 0, 2, 1, 1);
+
 --
 -- Índices para tablas volcadas
 --
@@ -793,17 +857,21 @@ ALTER TABLE `estado`
   ADD PRIMARY KEY (`IDESTADO`);
 
 --
--- Indices de la tabla `general_member_login_data`
---
-ALTER TABLE `general_member_login_data`
-  ADD PRIMARY KEY (`LOGIN_DATA_ID`);
-
---
 -- Indices de la tabla `municipio`
 --
 ALTER TABLE `municipio`
   ADD PRIMARY KEY (`IDMUNICIPIO`),
   ADD KEY `fk_MUNICIPIO_DEPARTAMENTO1_idx` (`FKDEPARTAMENTO`);
+
+--
+-- Indices de la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  ADD PRIMARY KEY (`IDNOTIFICACION`),
+  ADD KEY `FKPERSONA` (`FKUSUARIO`),
+  ADD KEY `FKPERSONA_2` (`FKUSUARIO`),
+  ADD KEY `FKUSUARIO_DESTINO` (`FKUSUARIO_DESTINO`),
+  ADD KEY `FKESTADO` (`FKESTADO`);
 
 --
 -- Indices de la tabla `orden`
@@ -835,8 +903,7 @@ ALTER TABLE `paquete_orden`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`IDPERSONA`),
-  ADD KEY `fk_PERSONA_ESTADO_idx` (`FKESTADO`),
-  ADD KEY `fk_PERSONA_ROL1_idx` (`FKROL`);
+  ADD KEY `fk_PERSONA_ESTADO_idx` (`FKESTADO`);
 
 --
 -- Indices de la tabla `rol`
@@ -871,6 +938,15 @@ ALTER TABLE `tipo_empresa`
 ALTER TABLE `tipo_envio`
   ADD PRIMARY KEY (`IDTIPO_ENVIO`),
   ADD KEY `fk_TIPO_PAQUETE_ESTADO1_idx` (`FKESTADO`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`IDUSUARIO`),
+  ADD KEY `FKESTADO` (`FKESTADO`),
+  ADD KEY `FKROL` (`FKROL`),
+  ADD KEY `FKPERSONA` (`FKPERSONA`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -916,13 +992,13 @@ ALTER TABLE `envio`
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `IDESTADO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IDESTADO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de la tabla `general_member_login_data`
+-- AUTO_INCREMENT de la tabla `notificacion`
 --
-ALTER TABLE `general_member_login_data`
-  MODIFY `LOGIN_DATA_ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `notificacion`
+  MODIFY `IDNOTIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `orden`
@@ -946,7 +1022,7 @@ ALTER TABLE `paquete_orden`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `IDPERSONA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDPERSONA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -979,6 +1055,12 @@ ALTER TABLE `tipo_envio`
   MODIFY `IDTIPO_ENVIO` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -999,7 +1081,7 @@ ALTER TABLE `destinatario`
 -- Filtros para la tabla `destinatario_direccion`
 --
 ALTER TABLE `destinatario_direccion`
-  ADD CONSTRAINT `fk_DESTINATARIO_DIRECCION_DESTINATARIO1` FOREIGN KEY (`FKDESTINATARIO`) REFERENCES `destinatario` (`idDESTINATARIO`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_DESTINATARIO_DIRECCION_DESTINATARIO1` FOREIGN KEY (`FKDESTINATARIO`) REFERENCES `destinatario` (`IDDESTINATARIO`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_DESTINATARIO_DIRECCION_MUNICIPIO1` FOREIGN KEY (`FKMUNICIPIO`) REFERENCES `municipio` (`IDMUNICIPIO`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -1022,6 +1104,14 @@ ALTER TABLE `municipio`
   ADD CONSTRAINT `fk_MUNICIPIO_DEPARTAMENTO1` FOREIGN KEY (`FKDEPARTAMENTO`) REFERENCES `departamento` (`IDDEPARTAMENTO`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  ADD CONSTRAINT `notificacion_ibfk_1` FOREIGN KEY (`FKESTADO`) REFERENCES `estado` (`IDESTADO`),
+  ADD CONSTRAINT `notificacion_ibfk_2` FOREIGN KEY (`FKUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`),
+  ADD CONSTRAINT `notificacion_ibfk_3` FOREIGN KEY (`FKUSUARIO_DESTINO`) REFERENCES `usuario` (`IDUSUARIO`);
+
+--
 -- Filtros para la tabla `orden`
 --
 ALTER TABLE `orden`
@@ -1041,14 +1131,13 @@ ALTER TABLE `paquete`
 ALTER TABLE `paquete_orden`
   ADD CONSTRAINT `fk_PAQUETE_ORDEN_ESTADO1` FOREIGN KEY (`FKESTADO`) REFERENCES `estado` (`IDESTADO`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_PAQUETE_ORDEN_ORDEN1` FOREIGN KEY (`FKORDEN`) REFERENCES `orden` (`IDORDEN`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_PAQUETE_ORDEN_PAQUETE1` FOREIGN KEY (`FKPAQUETE`) REFERENCES `paquete` (`idPAQUETE`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_PAQUETE_ORDEN_PAQUETE1` FOREIGN KEY (`FKPAQUETE`) REFERENCES `paquete` (`IDPAQUETE`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `persona`
 --
 ALTER TABLE `persona`
-  ADD CONSTRAINT `fk_PERSONA_ESTADO` FOREIGN KEY (`FKESTADO`) REFERENCES `estado` (`IDESTADO`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_PERSONA_ROL1` FOREIGN KEY (`FKROL`) REFERENCES `rol` (`IDROL`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_PERSONA_ESTADO` FOREIGN KEY (`FKESTADO`) REFERENCES `estado` (`IDESTADO`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `rol`
@@ -1073,6 +1162,14 @@ ALTER TABLE `tipo_codigo`
 --
 ALTER TABLE `tipo_envio`
   ADD CONSTRAINT `fk_TIPO_PAQUETE_ESTADO1` FOREIGN KEY (`FKESTADO`) REFERENCES `estado` (`IDESTADO`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`FKESTADO`) REFERENCES `estado` (`IDESTADO`),
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`FKROL`) REFERENCES `rol` (`IDROL`),
+  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`FKPERSONA`) REFERENCES `persona` (`IDPERSONA`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

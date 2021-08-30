@@ -2,10 +2,10 @@
 	define("DB_HOST", "localhost");
 	define("DB_ADMIN", "root"); 
 	define("DB_PASSWORD", "");
-	define("DB_SAFIG_DATA", "safigdb");
+	define("DB_FAST_DATA", "fast_express");
 
 	try{
-		$Safigdb = new PDO("mysql:host=".DB_HOST.";dbname=".DB_SAFIG_DATA.";charset=utf8", DB_ADMIN, DB_PASSWORD);
+		$fexdb = new PDO("mysql:host=".DB_HOST.";dbname=".DB_FAST_DATA.";charset=utf8", DB_ADMIN, DB_PASSWORD);
 	} catch(Exception $e){
 		error_log($e->getMessage(), 0);
 		echo "Error".$e;
