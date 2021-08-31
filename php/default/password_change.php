@@ -5,9 +5,9 @@ sec_session_start();
 
 if(isset($_POST['p'])) {
 	$p1 = $_POST['p'];
-	$uid = get_eid($Safigdb);	
+	$uid = get_eid($fexdb);	
 	$pf = password_hash($p1, PASSWORD_BCRYPT);	
-	$MOD_PASSWORD = write("update usuario as us set us.password='$pf',us.password_change=0 where idusuario=$uid", $Safigdb);
+	$MOD_PASSWORD = write("UPDATE usuario AS US SET US.PASSWORD='$pf',US.PASSWORD_CHANGE=0 WHERE US.IDUSUARIO=$uid", $fexdb);
 	header("Location: ../../index.php");
 }
 

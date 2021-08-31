@@ -6,56 +6,68 @@
 ?>	
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Torre Control | Cambio de Contraseña</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="js/login_sha512.js"></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+	<title>FAST |PASSWORD CHANGE</title>
+
+	<link href="css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="hold-transition login-page">
-	<div class="login-box">
-	  <div class="login-logo">
-		<a href="#"><strong>SAFIG</strong>Cambio de Contraseña</a>
-	  </div>
-	  <!-- /.login-logo -->
-	  <div class="card">
-		<div class="card-body login-card-body">
-		  <p class="login-box-msg">Ingrese Nueva Contraseña </p>
-
-		  <form action="php\default\password_change.php" method="post">
-			<div class="form-group has-feedback">
-			  <input name="password1" id="new_Password" type="password" class="form-control" placeholder="Nueva Contraseña">
+<body>
+	<main class="d-flex w-100">
+		<div class="container d-flex flex-column">
+			<div class="row vh-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+						<div class="text-center mt-4">
+							<h1 class="h2">FAST | CAMBIO DE CONTRASEÑA</h1>
+							<p class="lead">
+								Recuerde ingresar una contraseña segura
+							</p>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<div class="m-sm-4">
+									<div class="text-center">
+										<img src="img/logos/logoFast.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="250" height="140" />
+									</div>
+									<form action="php\default\password_change.php" method="post">
+										<div class="form-group has-feedback pt-2">
+										  <input name="password1" id="new_Password" type="password" class="form-control" placeholder="Nueva Contraseña">
+										</div>
+										<div class="form-group has-feedback pt-2">
+										  <input name="password2" id="new_Password_Comfirm" type="password" class="form-control" placeholder="Ingrese Nuevamente">
+										</div>
+										<div class="row">
+										  <div class="m-sm-4 text-center" >
+											<button type="submit"  onclick="validatePassword(this.form)" class="btn btn-primary btn-lg btn-block">Cambiar Contraseña</button>
+										  </div>
+										  <!-- /.col -->
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="form-group has-feedback">
-			  <input name="password2" id="new_Password_Comfirm" type="password" class="form-control" placeholder="Ingrese Nuevamente">
-			</div>
-			<div class="row">
-			  <div class="col-12">
-				<button type="submit"  onclick="validatePassword(this.form)" class="btn btn-primary btn-block btn-flat">Cambiar Contraseña</button>
-			  </div>
-			  <!-- /.col -->
-			</div>
-		  </form>
 		</div>
-		<!-- /.login-card-body -->
-	  </div>
-	</div>
-<!-- /.login-box -->
-<script>
-	
-	
+	</main>
+
+	<script src="js/app.js"></script>
+<script>	
 	function validatePassword(form) {
 		var p1 = document.getElementById('new_Password').value;
 		var p2 = document.getElementById('new_Password_Comfirm').value;
@@ -95,9 +107,7 @@
 		form.submit();
 	}
 </script>
-	<!-- jQuery -->
-	<script src="plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap 4 -->
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

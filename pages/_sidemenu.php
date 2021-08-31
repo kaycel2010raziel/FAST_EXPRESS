@@ -7,13 +7,13 @@ function get_sidemenu_admin(){
 				Pages
 			</li>
 			<li class="sidebar-item active">
-				<a class="sidebar-link" href="index.html">
+				<a class="sidebar-link" href="FEX_ADMIN_MAIN_VIEW.php">
 					<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
 				</a>
 			</li>
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="pages-profile.html">
-					<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+				<a class="sidebar-link" href="FEX_ADMIN_USER.php">
+					<i class="align-middle" data-feather="user"></i> <span class="align-middle">Usuarios</span>
 				</a>
 			</li>
 			<li class="sidebar-item">
@@ -47,15 +47,15 @@ function header_style(){
 			<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 			
 			<link rel="preconnect" href="https://fonts.gstatic.com">
-			<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-			<title>Bootstrap 5 Admin Template</title>
+			<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
+			<title>Fast | Express </title>
 			<link href="../css/app.css" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">	
 			
 			<script src="../plugins/jquery/jquery_tower.min.js"></script>
 			<script src="../plugins/jquery/jquery.min.js"></script>
 			<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-			<link rel="stylesheet" href="../plugins/datatables/datatables.css">
+			<link rel="stylesheet" href="../plugins/datatable5/dataTables.bootstrap5.min.css">
 			<!-- fullCalendar -->
 			<link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
 			<link rel="stylesheet" href="../plugins/timepicker/jquery.timepicker.css">
@@ -90,11 +90,13 @@ function Footer_style(){
 
 function library(){
 	echo '	<!-- jQuery -->
+			<script type="text/javascript" src="../plugins/datatable5/jquery-3.5.1.js"></script>
 			<script src="../plugins/jquery/jquery.min.js"></script>
 			<script src="../plugins/html2canvas/html2canvas.min.js"></script>
 			<script src="../plugins/html2canvas/html2canvas.js"></script>
 			<script src="../plugins/daterangepicker/moment.min.js"></script>
-			<script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
+			<script type="text/javascript" src="../plugins/datatable5/jquery.dataTables.min.js"></script>
+			
 			<!-- Bootstrap -->
 			<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 			<!-- jQuery UI -->
