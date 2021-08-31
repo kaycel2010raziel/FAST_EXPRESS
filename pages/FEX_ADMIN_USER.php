@@ -21,11 +21,8 @@
 	<head>
 		<?php echo header_style();?>
 		<script src="../js/app.js"></script>
-		<script type="text/javascript" src="../js/Timeout_login.js"></script>
-		<script type="text/javascript" src="../js/FEX_ADMIN_MAIN_VIEW.js"></script>
 		<script type="text/javascript" src="../js/FEX_ADMIN_USER.js"></script>
 	</head>
-	
 <body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
@@ -79,16 +76,18 @@
 			</nav>
 			<main class="content">
 				<div class="container-fluid p-0" id="table_User">
-					
+					<!--TABLE USER-->
 				</div>
+				<div class="container-fluid p-0" id="modals">
+				 <?php echo Modals();?>
+				</div>
+				<!-- Modal -->
 			</main>
-			 <?php echo Modals();?>
 			<footer class="footer">
 				<?php echo Footer_style();?>
 			</footer>
 		</div>
 	</div>
-	
 	<?php echo library();?>
 </body>
 </html>

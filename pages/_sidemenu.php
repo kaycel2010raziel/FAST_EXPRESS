@@ -45,15 +45,16 @@ function header_style(){
 			<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 			<meta name="author" content="AdminKit">
 			<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-			
-			<link rel="preconnect" href="https://fonts.gstatic.com">
 			<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
 			<title>Fast | Express </title>
 			<link href="../css/app.css" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">	
+			<!-- encabezados -->
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+			<script type="text/javascript" src="../plugins/datatable5/jquery-3.5.1.js"></script>
 			
-			<script src="../plugins/jquery/jquery_tower.min.js"></script>
-			<script src="../plugins/jquery/jquery.min.js"></script>
+			<script type="text/javascript" src="../js/Timeout_login.js"></script>
+			<script type="text/javascript" src="../js/FEX_ADMIN_MAIN_VIEW.js"></script>
+			<!-- styles -->
 			<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
 			<link rel="stylesheet" href="../plugins/datatable5/dataTables.bootstrap5.min.css">
 			<!-- fullCalendar -->
@@ -72,7 +73,7 @@ function Footer_style(){
 				<div class="row text-muted">
 					<div class="col-6 text-start">
 						<p class="mb-0">
-							<a class="text-muted" href="#" target="_blank"><strong>AdminKit Demo</strong></a> &copy;
+							<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> &copy UMG
 						</p>
 					</div>
 					<div class="col-6 text-end">
@@ -90,17 +91,10 @@ function Footer_style(){
 
 function library(){
 	echo '	<!-- jQuery -->
-			<script type="text/javascript" src="../plugins/datatable5/jquery-3.5.1.js"></script>
-			<script src="../plugins/jquery/jquery.min.js"></script>
 			<script src="../plugins/html2canvas/html2canvas.min.js"></script>
 			<script src="../plugins/html2canvas/html2canvas.js"></script>
 			<script src="../plugins/daterangepicker/moment.min.js"></script>
-			<script type="text/javascript" src="../plugins/datatable5/jquery.dataTables.min.js"></script>
-			
-			<!-- Bootstrap -->
-			<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-			<!-- jQuery UI -->
-			<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+			<script src="../plugins/datatable5/jquery.dataTables.min.js"></script>
 			<!-- fullCalendar 2.2.5 -->
 			<script src="../plugins/select2/js/select2.js"></script>
 			<script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
@@ -109,62 +103,60 @@ function library(){
 			<script src="../plugins/fullcalendar/moment.min.js"></script>
 			<script src="../plugins/fullcalendar/3.10.0/fullcalendar.js"></script>
 			<script src="../plugins/fullcalendar/3.10.0/locale/es.js"></script>
-			<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-			
 			';
 }
 
 function Modals(){
 	echo '<!-- GENERIC MODAL LG-->
-			<div class="modal fade" id="lg_modal" tabindex="-1" role="dialog" aria-labelledby="lg_modal_title" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
+			<div class="modal fade" id="lg_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="lg_modal_title"></h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>
+							<h5 class="modal-title" id="lg_modal_title">Modal title</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="modal-body size-limit" id="lg_modal_content"></div>
+						<div class="modal-body" id="lg_modal_content">
+		
+						</div>
 						<div class="modal-footer" id="lg_modal_footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-							<button type="button" class="btn btn-success" id="lg_modal_apply_button" ></button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-primary" id="lg_modal_apply_button"></button>
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<!-- GENERIC MODAL XL-->
-			<div class="modal fade" id="xl_modal" tabindex="-1" role="dialog" aria-labelledby="xl_modal_title" aria-hidden="true">
-				<div class="modal-dialog modal-xl" role="document">
+			<div class="modal fade" id="lg_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-xl">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="xl_modal_title"></h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>
+							<h5 class="modal-title" id="lg_modal_title">Modal title</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="modal-body" id="xl_modal_content"></div>
-						<div class="modal-footer" id="xl_modal_footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-							<button type="button" class="btn btn-success" id="xl_modal_apply_button" ></button>
+						<div class="modal-body" id="xl_modal_content">
+		
+						</div>
+						<div class="modal-footer" id="lg_modal_footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-primary" id="lg_modal_apply_button"></button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- GENERIC MODAL SM-->
-			<div class="modal fade" id="sm_modal" tabindex="-1" role="dialog" aria-labelledby="sm_modal_title" aria-hidden="true">
-				<div class="modal-dialog modal-sm" role="document">
+			<div class="modal fade" id="lg_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="sm_modal_title"></h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>
+							<h5 class="modal-title" id="lg_modal_title">Modal title</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="modal-body size-limit" id="sm_modal_content"></div>
-						<div class="modal-footer" id="sm_modal_footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-							<button type="button" class="btn btn-success" id="sm_modal_apply_button" ></button>
+						<div class="modal-body" id="sm_modal_content">
+		
+						</div>
+						<div class="modal-footer" id="lg_modal_footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-primary" id="lg_modal_apply_button"></button>
 						</div>
 					</div>
 				</div>

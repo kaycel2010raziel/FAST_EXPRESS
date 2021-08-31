@@ -7,11 +7,11 @@
 		case 1:	//LISTADO DE USUARIOS//
 			echo json_encode($USUARIOS = read("SELECT US.IDUSUARIO,RL.FOTO,US.CORREO,PER.IDPERSONA,PER.DPI,PER.NIT, CONCAT(PER.NOMBRE,' ',PER.APELLIDO) AS PERSONA, PER.TELEFONO,PER.DIRECCION, RL.NOMBRE AS ROL,RL.IDROL,ES.NOMBRE AS ESTADO, ES.IDESTADO FROM usuario AS US JOIN persona as PER ON PER.IDPERSONA=US.FKPERSONA JOIN rol as RL ON RL.IDROL=US.FKROL JOIN estado as ES ON ES.IDESTADO=US.FKESTADO", $fexdb));
 			break;
-		/*	
-		case 2:	//LISTADO DE ROLES//
-			echo json_encode($ROLES = read("SELECT idrol,nombre as rol FROM rol WHERE fkestado in(2);", $Safigdb));
-			break;
 			
+		case 2:	//LISTADO DE ROLES//
+			echo json_encode($ROLES = read("SELECT IDROL,NOMBRE AS ROL FROM rol WHERE FKESTADO IN(2)", $fexdb));
+			break;
+		/*
 		case 3:	//ALMACENAR USUARIO//
 			if(isset($_POST["nombre"])){$nombre = $_POST["nombre"];}else{exit();}
 			if(isset($_POST["apellido"])){$apellido = $_POST["apellido"];}else{exit();}

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$("#nav_button").append('<li class="nav-item d-none d-sm-inline-block"><button class="btn btn-info" id="new_user" >Nuevo Usuario</button></li>');
-	$("#nav_button").append('<li class="nav-item d-none d-sm-inline-block"><button title="Generar PDF " class="btn btn-danger ml-4"  id="PDF" ><i class="fa fa-file-pdf-o">PDF</i></button></li>');
+	//$("#nav_button").append('<li class="nav-item d-none d-sm-inline-block"><button title="Generar PDF " class="btn btn-danger ml-4"  id="PDF" ><i class="fa fa-file-pdf-o">PDF</i></button></li>');
 	$("#table_User").html("<div class='table-responsive'><table class='table align-middle' id='tbllistado2'><thead class='thead-dark'><th>NO</th><th>NOMBRE</th><th>TELEFONO</th><th>DIRECCION</th><th>NIT</th><th>CORREO</th><th>ROL</th><th>ESTADO</th><th>ACCIONES</th></thead><tbody id='tbllistado_body2'></tbody></table></div>");
 	$("#new_user").click(function(){New_User();});	
 	$("#PDF").click(function(){PDF_USER();});	
@@ -14,7 +14,7 @@ $(document).ready(function(){
 		.done(function(stream) {
 			data = jQuery.parseJSON(stream);
 			$("#tbllistado_body2").empty();
-			console.log(data);
+			//console.log(data);
 			data.forEach(function(element, index, array){
 				switch(element['IDESTADO']){
 					case '2': var EstadoClass1 = 'table-success'; break;
@@ -296,6 +296,7 @@ $(document).ready(function(){
 	
 	/*****GENERAR NUEVO USUARIO / PERSONA ***/
 	function New_User(){
+		console.log('user');
 		$("#lg_modal_title").html("Crear Usuario");
 		$("#lg_modal_apply_button").remove();	
 		$("#lg_modal_content").html(
@@ -392,24 +393,8 @@ $(document).ready(function(){
 		"	</div>"
 			
 		);
-		$('#farmacias_selector').hide();
-		//CARGAR ROLES//
-		$.ajax({type: "POST", url: "../php/SAFIG_ADMIN_USER.php", async: true , data: {'a0': 2}})
-		.done(function(stream) {	
-			data = jQuery.parseJSON(stream);
-			$("#Select_Rol").append('<option  value="0" selected="selected">Seleccione el rol que tendra</option>');
-			data.forEach(function(element, index, array){
-				$("#Select_Rol").append('<option  value="'+element['idrol']+'">'+element['rol']+'</option>');
-			});
-			$('#Select_Rol').change(function(){ 
-				var op = $('#Select_Rol option:selected').val();
-				if (op == 2) {
-					$('#farmacias_selector').show();
-				}else{
-					$('#farmacias_selector').hide();
-				}				
-			});
-		}); 
+		
+		/*
 		//CARGAR FARMACIAS PARA LOS USUARIOS ROL FARMACIA//
 		$.ajax({type: "POST", url: "../php/SAFIG_ADMIN_USER.php", async: true , data: {'a0': 11}})
 		.done(function(stream) {	
@@ -419,9 +404,14 @@ $(document).ready(function(){
 				$("#Select_Farmacia").append('<option  value="'+element['idfarmacia']+'">'+element['nombre']+'</option>');
 			});
 		}); 
-
-		$('#lg_modal').modal({backdrop: 'static', keyboard: false})
-
+		
+		
+		
+		*/
+		$('#lg_modal').modal('show')
+		
+		
+		/*
 		//GUARDAR USUARIO//
 		$('#GuardarData').off().click(function(){
 			var info="Debe ingresar todos los datos";
@@ -437,35 +427,10 @@ $(document).ready(function(){
 			var Select_Farmacia=$('#Select_Farmacia').val(); 
 			var CodeSha = hex_sha512(Password);
 			
-			//***********************************///
-			if(Select_Farmacia > 0 ){
-				
-			}
 			
 			
 			$.ajax({type: "POST", url: "../php/SAFIG_ADMIN_USER.php", async: true , data: {a0: 3,nombre:nombre,apellido:apellido,dpi:dpi,nit:nit,nacimiento:nacimiento,usuario:usuario,Select_Rol:Select_Rol,CodeSha:CodeSha}})
 			.done(function(stream) {
-				var lasid = stream;
-				//CARGAR FOTO USUARIO//
-				if($("#file-upload").prop("files").length > 0){ 
-					var form_data = new FormData();	
-					var files = $("#file-upload").prop("files");
-					for (var i = 0; i < files.length; i++) {
-						form_data.append("file"+i, files.item(i));
-					};
-					form_data.append("a0", 4);
-					form_data.append("lasid",lasid);
-					$.ajax({
-						url: "../php/SAFIG_ADMIN_USER.php",                         
-						type: 'POST',
-						cache: false,
-						data: form_data,
-						contentType: false,
-						processData: false,
-						success: function(d){
-						}
-					});				
-				}
 				Swal.fire({
 				  //position: 'top-end',
 				  icon: 'success',
@@ -477,6 +442,7 @@ $(document).ready(function(){
 				  });
 			});
 		}); 
+		*/
 	}
 	
 	
