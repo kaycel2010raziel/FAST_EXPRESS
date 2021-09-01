@@ -4,8 +4,6 @@ $(document).ready(function(){
 	
 });
 
-
-
 function CargarConteos(){
 	$.ajax({type: "POST", url: "../php/FEX_ADMIN_MAIN_VIEW.php", async: true , data: {'a0': 1}})
 	.done(function(stream) {	
@@ -24,24 +22,25 @@ function CargarNotificaciones(){
 	$.ajax({type: "POST", url: "../php/FEX_ADMIN_MAIN_VIEW.php", async: true , data: {'a0': 2}})
 	.done(function(stream) {	
 		data = jQuery.parseJSON(stream);
-		//console.log(data);
+		console.log(data);
+		$("#list_Notification_data").empty();
 		data.forEach(function(element, index, array){
-			$("#list_Notification").append(""+
-				"<a href='#' class='list-group-item'>"+
-				"	<div class='row g-0 align-items-center'>"+
-				"		<div class='col-2'>"+
-				"			<button type='button' id='Show' class='btn btn-danger btn-sm' idnotificacion="+element['IDNOTIFICACION']+"><i class='fa fa-window-close'>&nbsp;</i></button>"+
-				"		</div>"+
-				"	<div class='col-10'>"+
-				"		<div class='text-dark'>"+element['HEADER']+"</div>"+
-				"			<div class='text-muted small mt-1'>"+element['BODY']+"</div>"+
-				"			<div class='text-muted small mt-1'>"+element['FECHA_CREACION']+"</div>"+
-				"		</div>"+
-				"	</div>"+
-				"</a>");
+			$("#list_Notification_data").append(""+
+			"<li class='list-group-item'>"+
+			"	<div class='card'>"+
+			"		<div class='card-body'>"+
+			"			<h5 class='card-title'>"+element['HEADER']+"</h5>"+
+			"			<p class='card-text'>"+element['BODY']+"</p>"+
+			"			<div class='d-grid gap-2'>"+
+			"				<button class='btn btn-danger close' type='button'  idnotificacion="+element['IDNOTIFICACION']+">Cerrar</button>"+
+			"			</div>"+
+			"		</div>"+
+			"	</div>"+
+			
+			"</li>");
 		});
 		
-		$('.btn-sm').click(function(){
+		$('.close').click(function(){
 			var idnotificacion = $(this).attr("idnotificacion");
 			$.ajax({type: "POST", url: "../php/FEX_ADMIN_MAIN_VIEW.php", async: true , data: {'a0': 3,idnotificacion:idnotificacion}})
 			.done(function(stream) {	
@@ -49,8 +48,6 @@ function CargarNotificaciones(){
 			}); 
 		}); 
 	}); 
-	
-	
 }
 
 	

@@ -49,13 +49,14 @@
 									<span class="indicator"></span>
 								</div>
 							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+							<div class="dropdown-menu p-4 text-muted" style="width: 250px;">
 								<div class="dropdown-menu-header">
 									<label id='show_notification'></label> Nueva Notificacion
 								</div>
-								<div class="list-group" id='list_Notification'>
-									<!--show notification-->
-								</div>
+								<ul class="list-group" id='list_Notification_data'>
+									
+								</ul>
+							
 								<div class="dropdown-menu-footer">
 									<a href="#" class="text-muted">Mostar notificaciones</a>
 								</div>
